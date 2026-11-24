@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Cabecera -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cabecera"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="22dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tarjeta"
+                android:padding="14dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="84dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="VISIÓN 20/20"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/logo" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Puente Yape"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tus pagos de Yape y Plin llegan al sistema de la óptica, por WiFi o por internet"
+                android:textColor="#E3EEFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="28dp">
+
+            <!-- Estado -->
+            <LinearLayout style="@style/Tarjeta">
+                <TextView style="@style/TituloTarjeta" android:text="Estado" />
+
+                <LinearLayout android:id="@+id/filaPermiso" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="6dp" android:paddingBottom="6dp">
+                    <View android:id="@+id/puntoPermiso" android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/punto" />
+                    <TextView android:id="@+id/txtPermiso" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:layout_marginStart="12dp" android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="6dp" android:paddingBottom="6dp">
+                    <View android:id="@+id/puntoPc" android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/punto" />
+                    <TextView android:id="@+id/txtPc" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:layout_marginStart="12dp" android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="6dp" android:paddingBottom="6dp">
+                    <View android:id="@+id/puntoCola" android:layout_width="12dp" android:layout_height="12dp" android:background="@drawable/punto" />
+                    <TextView android:id="@+id/txtCola" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                        android:layout_marginStart="12dp" android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView android:id="@+id/txtAyudaPermiso" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp" android:background="#FFF4E5" android:padding="12dp" android:textColor="#7A4A00"
+                    android:textSize="13sp" android:visibility="gone" />
+
+                <Button android:id="@+id/btnPermiso" style="@style/BotonPrincipal" android:text="Dar acceso a las notificaciones" />
+                <Button android:id="@+id/btnBateria" style="@style/BotonTexto" android:text="Evitar que el celular la cierre (batería)" />
+            </LinearLayout>
+
+            <!-- Conexión -->
+            <LinearLayout style="@style/Tarjeta">
+                <TextView style="@style/TituloTarjeta" android:text="Conexión con la PC" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="@color/gris"
+                    android:textSize="13sp"
+                    android:text="Lo más fácil: en el programa de la PC vaya a Yape y Plin → «Enlazar celular» y escanee el QR con la cámara de este celular (estando en el mismo WiFi)." />
+
+                <TextView style="@style/Etiqueta" android:text="Dirección de la PC" />
+                <EditText android:id="@+id/edUrl" style="@style/Campo" android:hint="http://192.168.1.20:8765"
+                    android:inputType="textUri" />
+
+                <TextView style="@style/Etiqueta" android:text="Clave (token)" />
+                <EditText android:id="@+id/edToken" style="@style/Campo" android:hint="La clave que muestra la PC"
+                    android:inputType="textVisiblePassword" />
+
+                <TextView style="@style/Etiqueta" android:text="Código de internet (opcional)" />
+                <EditText android:id="@+id/edSecreto" style="@style/Campo" android:hint="Lo llena el QR"
+                    android:inputType="textVisiblePassword" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6dp"
+                    android:textColor="@color/gris" android:textSize="12sp"
+                    android:text="Con el código de internet los pagos llegan a la PC aunque el celular use datos móviles o esté en otro lugar. Viajan cifrados por un servidor gratuito (ntfy.sh)." />
+
+                <Button android:id="@+id/btnProbar" style="@style/BotonPrincipal" android:text="Guardar y probar conexión" />
+            </LinearLayout>
+
+            <!-- Opciones -->
+            <LinearLayout style="@style/Tarjeta">
+                <TextView style="@style/TituloTarjeta" android:text="Qué enviar" />
+                <Switch android:id="@+id/swActivo" android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="Puente activado" android:textSize="15sp" />
+                <Switch android:id="@+id/swYape" android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="Pagos de Yape" android:textSize="15sp" />
+                <Switch android:id="@+id/swPlin" android:layout_width="match_parent" android:layout_height="48dp"
+                    android:text="Pagos de Plin (apps de bancos)" android:textSize="15sp" />
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp"
+                    android:textColor="@color/gris" android:textSize="12sp"
+                    android:text="Solo se envían los avisos de dinero recibido. Los pagos que usted hace se ignoran." />
+            </LinearLayout>
+
+            <!-- Actividad -->
+            <LinearLayout style="@style/Tarjeta">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <TextView style="@style/TituloTarjeta" android:layout_width="0dp" android:layout_weight="1" android:text="Últimos avisos" />
+                    <TextView android:id="@+id/btnReintentar" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp" android:padding="6dp" android:text="REENVIAR" android:textColor="@color/azul"
+                        android:textSize="13sp" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:id="@+id/listaActividad" android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <TextView android:id="@+id/txtVersion" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="18dp" android:gravity="center" android:textColor="#9AA0A6" android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

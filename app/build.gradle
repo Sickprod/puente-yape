@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'pe.vision2020.puenteyape'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'pe.vision2020.puenteyape'
+        minSdk 26
+        targetSdk 34
+        versionCode 2
+        versionName '2.0'
+    }
+
+    signingConfigs {
+        // Firma fija incluida en el proyecto: así cada nueva versión se instala ENCIMA de la anterior
+        // sin perder la configuración. (Es una app privada, no se publica en Play Store.)
+        puente {
+            storeFile file('puente.keystore')
+            storePassword 'vision2020'
+            keyAlias 'puente'
+            keyPassword 'vision2020'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.puente
+        }
+        debug {
+            signingConfig signingConfigs.puente
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "VisionPuenteYape-${variant.versionName}.apk"
+        }
+    }
+}

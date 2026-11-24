@@ -1,0 +1,61 @@
+VISIÓN 20/20 · PUENTE YAPE (app para Android)
+==============================================
+Lee las notificaciones de Yape (y de Plin en apps de bancos) del celular y las envía al programa
+VISIÓN 20/20 de la PC: por el WiFi del local o, si no están en la misma red, por INTERNET (v2.0). El programa muestra el aviso, lo dice en voz alta y lo
+guarda en «Yape y Plin».
+
+IMPORTANTE: solo Android (8.0 o superior). En iPhone no es posible: Apple no permite que una app lea
+las notificaciones de otras apps.
+
+------------------------------------------------------------------
+1) CREAR EL ARCHIVO .APK (una sola vez)
+------------------------------------------------------------------
+Opción A · En esta PC (recomendada)
+  1. Instale Android Studio (gratis): https://developer.android.com/studio
+  2. Ábralo una vez y deje que termine de descargar el «Android SDK».
+  3. Doble clic en COMPILAR_APK.bat  →  crea VisionPuenteYape.apk en esta carpeta.
+     (También puede abrir la carpeta en Android Studio y usar Build → Build APK.)
+
+Opción B · Sin instalar nada (GitHub, gratis)
+  1. Cree una cuenta en github.com y un repositorio privado nuevo.
+  2. Descomprima PuenteYape_Android.zip y suba su contenido (ya incluye la carpeta .github).
+     Si sube esta carpeta, copie antes github\compilar-apk.yml a .github\workflows\compilar-apk.yml.
+  3. En la pestaña «Actions» se compila solo; al terminar descargue «VisionPuenteYape-APK».
+
+------------------------------------------------------------------
+2) INSTALAR EN EL CELULAR
+------------------------------------------------------------------
+  1. Pase VisionPuenteYape.apk al celular (WhatsApp a usted mismo, cable USB o Google Drive) y ábralo.
+  2. Android pedirá permitir «Instalar apps desconocidas» para esa app: acepte.
+  3. Abra «Puente Yape» → «Dar acceso a las notificaciones» → active Puente Yape.
+     Android 13 o superior puede decir «Ajuste restringido». Entonces:
+     Ajustes → Aplicaciones → Puente Yape → ⋮ (arriba a la derecha) → «Permitir ajustes restringidos»,
+     y vuelva a intentarlo.
+  4. Toque «Evitar que el celular la cierre (batería)» y acepte.
+     En Xiaomi / Redmi / Huawei / Oppo active además «Inicio automático» para Puente Yape.
+
+------------------------------------------------------------------
+3) ENLAZAR CON LA PC
+------------------------------------------------------------------
+  1. Para enlazar: celular y PC en el MISMO WiFi y el programa VISIÓN 20/20 abierto.
+     (Después el celular puede estar en cualquier lugar, con datos móviles.)
+  2. En la PC: Yape y Plin → «📱 Enlazar celular». Aparece un QR.
+  3. En el celular: abra la cámara (o Google Lens), apunte al QR y toque el enlace.
+     La app se configura sola, prueba la conexión y la PC muestra «¡Enlazado!».
+  Sin QR: escriba en la app la dirección (ej. 192.168.1.20) y la clave que muestra la PC.
+  Si no conecta: en Windows, permita el programa en el Firewall para «Redes privadas».
+
+------------------------------------------------------------------
+CÓMO FUNCIONA
+------------------------------------------------------------------
+- WiFi primero (instantáneo). Si la PC no está en la misma red, envía por internet: el aviso viaja
+  CIFRADO por el servidor gratuito ntfy.sh y la PC lo recoge y confirma. Gratis y sin crear cuentas.
+- El aviso queda en el celular hasta que la PC confirma («Recibido por la PC ✓»). Si la PC estuvo
+  apagada, se vuelve a publicar cada 6 h (hasta 48 h).
+- El «Código de internet» lo pone el QR. Sin él, solo funciona por WiFi.
+- Solo envía avisos de dinero RECIBIDO. «Yapeaste», «Enviaste», promociones, etc. se ignoran.
+- Plin solo se acepta desde apps de bancos/cajas: un mensaje de WhatsApp o SMS no puede crear un pago.
+- La PC descarta avisos repetidos.
+
+Archivo puente.keystore: es la firma de la app. No lo borre: permite instalar versiones nuevas encima
+sin perder la configuración.
